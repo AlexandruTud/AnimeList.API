@@ -928,11 +928,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ionut\\source\\repos\\Anime-BackEndAPI\\Anime-BackEndAPI\\Anime-BackEndAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Ionut\\Documents\\GitHub\\Anime-BackEndAPI\\Anime-BackEndAPI\\Anime-BackEndAPI.csproj",
       "projectName": "Anime-BackEndAPI",
-      "projectPath": "C:\\Users\\Ionut\\source\\repos\\Anime-BackEndAPI\\Anime-BackEndAPI\\Anime-BackEndAPI.csproj",
+      "projectPath": "C:\\Users\\Ionut\\Documents\\GitHub\\Anime-BackEndAPI\\Anime-BackEndAPI\\Anime-BackEndAPI.csproj",
       "packagesPath": "C:\\Users\\Ionut\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ionut\\source\\repos\\Anime-BackEndAPI\\Anime-BackEndAPI\\obj\\",
+      "outputPath": "C:\\Users\\Ionut\\Documents\\GitHub\\Anime-BackEndAPI\\Anime-BackEndAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -17,6 +17,11 @@ namespace Anime_BackEndAPI.Services
           var AnimeList = await _getAnimeListRepository.GetAnimeListRepositoryAsync();
             return AnimeList;
         }
+        public async Task<IEnumerable<MinimalAnimeDTO>> GetAnimeListByUserIdServiceAsync(int IdUser)
+        {
+            var AnimeList = await _getAnimeListRepository.GetAnimeListByUserIdAsync(IdUser);
+            return AnimeList;
+        }
         
     }
 }

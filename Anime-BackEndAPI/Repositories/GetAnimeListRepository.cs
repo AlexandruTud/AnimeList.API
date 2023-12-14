@@ -22,5 +22,15 @@ namespace Anime_BackEndAPI.Repositories
                 return animeList;
             }
         }
+        public async Task<IEnumerable<MinimalAnimeDTO>> GetAnimeListByUserIdAsync(int IdUser)
+        {
+            using(IDbConnection connection = _dbConnectionFactory.ConnectToDataBase())
+            {
+                var parameters = new DynamicParameters();   
+                parameters.Add("@UserID", IdUser);
+                var animeList = await connection.QueryAsync<MinimalAnimeDTO>("GetAnimeListForUser", parameters,commandType:CommandType.StoredProcedure);
+                return animeList;
+            }
+        }
     }
 }

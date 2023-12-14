@@ -21,6 +21,13 @@ namespace Anime_BackEndAPI
             services.AddScoped<IGetMoreInformationAboutAnimeService,GetMoreInformationAboutAnimeService>();
             services.AddScoped<IInsertViewingRecordDetailsRepository,InsertViewingRecordDetailsRepository>();
             services.AddScoped<IInsertViewingRecordDetailsService,InsertViewingRecordDetailsService>();
+            services.AddScoped<IGetTopGenresRepository,GetTopGenresRepository>();
+            services.AddScoped<IGetTopGenresService,GetTopGenresService>();
+            services.AddScoped<IUserRatingRepository, UserRatingRepository>();
+            services.AddScoped<IUserRatingService, UserRatingService>();
+            services.AddScoped<IDeleteViewRecRepository,DeleteViewRecRepository>();
+
+
             return services;
         }
     }

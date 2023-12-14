@@ -6,5 +6,6 @@ namespace Anime_BackEndAPI.Interfaces
     public interface IGetAnimeListService
     {
         Task<IEnumerable<MinimalAnimeDTO>> GetAnimeListServiceAsync();
+        Task<IEnumerable<MinimalAnimeDTO>> GetAnimeListByUserIdServiceAsync(int IdUser);
     }
 }
