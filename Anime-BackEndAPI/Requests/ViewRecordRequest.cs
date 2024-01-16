@@ -2,7 +2,7 @@
 {
     public class ViewRecordRequest
     {
-        public int AnimeId { get; set; }
+        public string AnimeName { get; set; }
         public int UserId { get; set; }
     }
 }

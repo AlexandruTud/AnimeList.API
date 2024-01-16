@@ -15,7 +15,7 @@ namespace Anime_BackEndAPI.Controllers
             _loginService = loginService ?? throw new ArgumentNullException(nameof(loginService));
         }
         [HttpPost]
-        public  async Task<IActionResult> Login([FromBody] UserDTO user)
+        public  async Task<IActionResult> Login([FromBody] UserLoginDTO user)
         {
             var userID = await _loginService.LoginAsync(user);
             if(userID == -1)

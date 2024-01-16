@@ -4,6 +4,6 @@ namespace Anime_BackEndAPI.Interfaces
 {
     public interface IInsertViewingRecordDetailsRepository
     {
-        Task<bool> InsertViewRecordRepositoryAsync(ViewRecordDTO viewRecord); 
+        Task<int> InsertViewRecordRepositoryAsync(ViewRecordDTO viewRecord); 
     }
 }

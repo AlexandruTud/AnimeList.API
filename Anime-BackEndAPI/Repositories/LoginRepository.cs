@@ -13,7 +13,7 @@ namespace Anime_BackEndAPI.Repositories
             _dbConnectionFactory = dbConnectionFactory;
         }
         
-        public async Task<int> Login(UserDTO user)
+        public async Task<int> Login(UserLoginDTO user)
         {
             using(IDbConnection connection = _dbConnectionFactory.ConnectToDataBase())
             {

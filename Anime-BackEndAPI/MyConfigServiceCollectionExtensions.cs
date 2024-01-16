@@ -26,6 +26,8 @@ namespace Anime_BackEndAPI
             services.AddScoped<IUserRatingRepository, UserRatingRepository>();
             services.AddScoped<IUserRatingService, UserRatingService>();
             services.AddScoped<IDeleteViewRecRepository,DeleteViewRecRepository>();
+            services.AddScoped<IUpdateViewRecordRepository,UpdateViewRecordRepository>();
+            services.AddScoped<IGetViewingRecordByAnimeNameRepository, GetViewingRecordByAnimeNameRepository>();
 
 
             return services;

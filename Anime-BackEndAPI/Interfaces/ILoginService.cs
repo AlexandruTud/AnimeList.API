@@ -4,6 +4,6 @@ namespace Anime_BackEndAPI.Interfaces
 {
     public interface ILoginService
     {
-        Task<int> LoginAsync(UserDTO user);
+        Task<int> LoginAsync(UserLoginDTO user);
     }
 }

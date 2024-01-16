@@ -12,24 +12,23 @@ namespace Anime_BackEndAPI.Repositories
         {
             _dbConnectionFactory = dbConnectionFactory;
         }   
-        public async Task<bool> InsertViewRecordRepositoryAsync(ViewRecordDTO viewRecord)
+        public async Task<int> InsertViewRecordRepositoryAsync(ViewRecordDTO viewRecord)
         {
             var parameters = new DynamicParameters();
+            parameters.Add("@UserID", viewRecord.UserID);
             parameters.Add("@AnimeName", viewRecord.AnimeName);
-            parameters.Add("@viewedEpisodes", viewRecord.viewedEpisodes);
+            parameters.Add("@NumberOfEpisodes", viewRecord.viewedEpisodes);
             parameters.Add("@StartDate", viewRecord.StartDate);
             parameters.Add("@EndDate", viewRecord.EndDate);
-            parameters.Add("@Raiting", viewRecord.Raiting);
+            parameters.Add("@Rating", viewRecord.Rating);
+            parameters.Add("@ViewRecordID", dbType: DbType.Int32, direction: ParameterDirection.Output);
             using (var conn = _dbConnectionFactory.ConnectToDataBase())
             {
-                var result = await conn.QueryAsync<int>("InsertViewRecord", parameters, commandType: CommandType.StoredProcedure);
-                if(result.Equals(1))
-                {
-                    return true;
-                }
-                
+                var result = await conn.QueryAsync<int>("InsertIntoViewingRecord", parameters, commandType: CommandType.StoredProcedure);
+                var viewRecordID = parameters.Get<int>("ViewRecordID");
+                return viewRecordID;
             }
-            return false;
+            
         }
     }
 }

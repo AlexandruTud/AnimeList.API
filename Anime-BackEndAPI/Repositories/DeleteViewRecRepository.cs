@@ -13,13 +13,13 @@ namespace Anime_BackEndAPI.Repositories
         {
             _dbConnectionFactory = dbConnectionFactory;
         }
-        public async Task<bool> DeleteViewRecordAsync(ViewRecordRequest viewRecord)
+        public async Task<bool> DeleteViewRecordAsync(int userID, string animeName)
         {
             using (IDbConnection conn = _dbConnectionFactory.ConnectToDataBase())
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("@UserID", viewRecord.UserId);
-                parameters.Add("@AnimeID", viewRecord.AnimeId);
+                parameters.Add("@AnimeName", animeName);
+                parameters.Add("@UserID", userID);
                 parameters.Add("@Success", dbType: DbType.Boolean, direction: ParameterDirection.Output);   
                 await conn.ExecuteAsync("DeleteViewingRecord", parameters, commandType: CommandType.StoredProcedure);
                 bool success = parameters.Get<bool>("Success");

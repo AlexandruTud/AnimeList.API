@@ -5,6 +5,6 @@ namespace Anime_BackEndAPI.Interfaces
 {
     public interface ILoginRepository
     {
-        Task<int> Login(UserDTO user);
+        Task<int> Login(UserLoginDTO user);
     }
 }

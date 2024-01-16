@@ -11,10 +11,14 @@ namespace Anime_BackEndAPI.Controllers
     {
         private readonly IInsertViewingRecordDetailsService _insertViewRecordService;
         private readonly IDeleteViewRecRepository _deleteViewRecRepository;
-        public ViewRecordController(IInsertViewingRecordDetailsService insertViewRecordService, IDeleteViewRecRepository deleteViewRecRepository)
+        private readonly IUpdateViewRecordRepository _updateViewRecordRepository;
+        private readonly IGetViewingRecordByAnimeNameRepository _getViewRecordByAnimeNameRepository;
+        public ViewRecordController(IInsertViewingRecordDetailsService insertViewRecordService, IDeleteViewRecRepository deleteViewRecRepository, IUpdateViewRecordRepository updateViewRecordRepository, IGetViewingRecordByAnimeNameRepository getViewingRecordByAnimeNameRepository)
         {
             _insertViewRecordService = insertViewRecordService;
             _deleteViewRecRepository = deleteViewRecRepository;
+            _updateViewRecordRepository = updateViewRecordRepository;
+            _getViewRecordByAnimeNameRepository = getViewingRecordByAnimeNameRepository;
         }
         [HttpPost]
         [Route("InsertViewRecord")]
@@ -22,20 +26,42 @@ namespace Anime_BackEndAPI.Controllers
         {
             
             var result = await _insertViewRecordService.InsertViewRecordServiceAsync(viewRecord);
+            if(result != 0)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
+        [HttpDelete]
+        [Route("DeleteViewRecord")]
+        public async Task<IActionResult> DeleteViewRecordControllerAsync( int userID ,string animeName)
+        {
+            var result = await _deleteViewRecRepository.DeleteViewRecordAsync(userID,animeName);
             if(result == true)
             {
                 return Ok();
             }
             return BadRequest();
         }
-        [HttpDelete]
-        [Route("DeleteViewRecord")]
-        public async Task<IActionResult> DeleteViewRecordControllerAsync(ViewRecordRequest viewRecordRequest)
+        [HttpPatch]
+        [Route("UpdateViewRecord")]
+        public async Task<IActionResult> UpdateViewRecordControllerAsync(UpdatedRecordDTO updatedRecordDTO)
         {
-            var result = await _deleteViewRecRepository.DeleteViewRecordAsync(viewRecordRequest);
+            var result = await _updateViewRecordRepository.UpdateViewRecordAsync(updatedRecordDTO);
             if(result == true)
             {
-                return Ok();
+                return Ok("Update Successful");
+            }
+            return BadRequest();
+        }
+        [HttpGet]
+        [Route("GetViewRecordByAnimeName/{animeName}")]
+        public async Task<IActionResult> GetViewRecordByAnimeNameControllerAsync(string animeName)
+        {
+            var result = await _getViewRecordByAnimeNameRepository.GetViewingRecordByAnimeNameRepositoryAsync(animeName);
+            if(result != null)
+            {
+                return Ok(result);
             }
             return BadRequest();
         }

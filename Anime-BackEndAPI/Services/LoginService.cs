@@ -11,7 +11,7 @@ namespace Anime_BackEndAPI.Services
         {
             _loginRepository = loginRepository;
         }
-        public async Task<int> LoginAsync(UserDTO user)
+        public async Task<int> LoginAsync(UserLoginDTO user)
         {
             if(user == null)
             {
